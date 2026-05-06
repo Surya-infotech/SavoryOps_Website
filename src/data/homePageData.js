@@ -87,56 +87,36 @@ export const whySavoryCards = [
   },
 ]
 
-export const mobileAppPreviews = [
-  {
-    title: 'User App Preview',
-    text: 'Built for mobile-first guest journeys with elegant ordering and payment touchpoints.',
-    image:
-      'https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    title: 'Employee App Preview',
-    text: 'Optimized for quick actions so staff can move faster during busy service windows.',
-    image:
-      'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80',
-  },
-]
-
 export const ecosystemBundleCards = [
   {
     slug: 'super-admin-panel',
     title: 'Super Admin',
     role: 'The Conductor',
     description: 'Orchestrate your entire brand empire.',
-    icon: '🎛️',
   },
   {
     slug: 'owner-panel',
     title: 'Owner Panel',
     role: 'The Visionary',
     description: 'Real-time P&L and menu engineering at your fingertips.',
-    icon: '📈',
   },
   {
     slug: 'landing-page',
     title: 'Landing Page',
     role: 'The Digital Host',
     description: 'A beautiful, high-converting front door for your guests.',
-    icon: '🔔',
   },
   {
     slug: 'user-app',
     title: 'User App',
     role: 'The Guest Experience',
     description: 'Seamless ordering and loyalty in their pocket.',
-    icon: '📱',
   },
   {
     slug: 'employee-app',
     title: 'Employee App',
     role: 'The Heartbeat',
     description: 'Empowering your team with KOT and schedules.',
-    icon: '🍲',
   },
 ]
 

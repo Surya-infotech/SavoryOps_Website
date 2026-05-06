@@ -68,10 +68,10 @@ function Navbar() {
               <Button
                 variant="contained"
                 component={RouterLink}
-                to="/contact"
+                to="/book-demo"
                 className="hidden md:inline-flex !rounded-full !bg-emerald-500 !px-6 !py-2 !text-[13px] !font-bold !tracking-wide hover:!bg-emerald-600"
               >
-                Get Started
+                Book Demo Call
               </Button>
               <IconButton
                 className="md:!hidden"
