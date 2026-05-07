@@ -1,10 +1,16 @@
+import ownerPanelImage from '../assets/Owner Panel.png'
+import superAdminPanelImage from '../assets/Super Admin Panel.png'
+import landingPageImage from '../assets/Landing Page.png'
+import userAppImage from '../assets/User App.png'
+import employeeAppImage from '../assets/Employee App.png'
+import heroImage from '../assets/Hero.png'
+
 export const homeHero = {
   badge: 'SavoryOps White Label SaaS',
   title: 'Launch and Scale Your White Label Restaurant Platform',
   description:
     'SavoryOps gives you a complete white label licensing-ready ecosystem so you can brand, deploy, and scale restaurant operations under your own identity.',
-  heroImage:
-    'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+  heroImage,
   metrics: [
     { label: 'Tenants', value: '128' },
     { label: 'Outlets', value: '640+' },
@@ -18,16 +24,14 @@ export const walkthroughTabs = [
     title: 'Global command for multi-tenant governance',
     text: 'Manage tenants, subscriptions, permissions, and global settings from one clean control layer with white label branding controls.',
     bullets: ['Tenant lifecycle monitoring', 'Plan and billing governance', 'White label theme and brand controls'],
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    image: superAdminPanelImage,
   },
   {
     label: 'Owner Panel',
     title: 'Performance intelligence for restaurant leaders',
     text: 'Track branch-level outcomes in real time with analytics, menu insights, and operational visibility.',
     bullets: ['Revenue and P&L clarity', 'Branch and menu optimization', 'Role and shift orchestration'],
-    image:
-      'https://images.unsplash.com/photo-1551281044-8b4a68625903?auto=format&fit=crop&w=1200&q=80',
+    image: ownerPanelImage,
   },
   {
     label: 'Landing Page',
@@ -38,16 +42,14 @@ export const walkthroughTabs = [
       'Brand-ready sections for offers, stories, and trust',
       'SEO-friendly layout for discoverability and growth',
     ],
-    image:
-      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80',
+    image: landingPageImage,
   },
   {
     label: 'User App',
     title: 'Guest-first experience from phone to table',
     text: 'From discovery to checkout, the User App keeps ordering smooth and transparent.',
     bullets: ['QR and mobile ordering', 'Live order tracking', 'Reservation and payment flow'],
-    image:
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    image: userAppImage,
   },
   {
     label: 'Employee App',
@@ -59,8 +61,7 @@ export const walkthroughTabs = [
       'Role-based action screens',
       'Faster handoffs, fewer delays',
     ],
-    image:
-      'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80',
+    image: employeeAppImage,
   },
 ]
 

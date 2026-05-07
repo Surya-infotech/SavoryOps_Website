@@ -58,11 +58,11 @@ function HomeHeroSection({ data }) {
 
           <Card className="!overflow-hidden !border !border-white/35 !rounded-3xl !bg-white/15 !backdrop-blur-xl">
             <CardContent className="!p-0">
-              <div className="mb-4 overflow-hidden rounded-2xl">
+              <div className="mb-4 flex h-56 items-center justify-center overflow-hidden rounded-2xl bg-black/10 md:h-72">
                 <img
                   src={data.heroImage}
                   alt="SavoryOps restaurant operations preview"
-                  className="h-48 w-full object-cover md:h-56"
+                  className="h-full w-full object-contain"
                   loading="lazy"
                 />
               </div>
