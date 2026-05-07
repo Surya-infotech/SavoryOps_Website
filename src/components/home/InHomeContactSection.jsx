@@ -5,6 +5,8 @@ import { Button, Card, CardContent, Container, TextField, Typography } from '@mu
 import { useState } from 'react'
 import { submitContactLead } from '../../services/contactLeadApi'
 
+const MAX_DESCRIPTION_LENGTH = 1000
+
 const iconMap = {
   mail: <SendRoundedIcon fontSize="small" />,
   address: <PlaceRoundedIcon fontSize="small" />,
@@ -21,7 +23,11 @@ function InHomeContactSection({ data }) {
   const [statusMessage, setStatusMessage] = useState({ type: '', text: '' })
 
   const handleChange = (field) => (event) => {
-    setFormData((prev) => ({ ...prev, [field]: event.target.value }))
+    const nextValue =
+      field === 'message'
+        ? event.target.value.slice(0, MAX_DESCRIPTION_LENGTH)
+        : event.target.value
+    setFormData((prev) => ({ ...prev, [field]: nextValue }))
   }
 
   const handleSubmit = async (event) => {
@@ -111,9 +117,13 @@ function InHomeContactSection({ data }) {
                   onChange={handleChange('message')}
                   multiline
                   minRows={4}
+                  inputProps={{ maxLength: MAX_DESCRIPTION_LENGTH }}
                   fullWidth
                   className="[&_.MuiOutlinedInput-root]:!rounded-xl"
                 />
+                <Typography className="!-mt-2 !text-right !font-sans !text-xs !text-[#5f7a71]">
+                  {formData.message.length}/{MAX_DESCRIPTION_LENGTH}
+                </Typography>
                 {statusMessage.text ? (
                   <Typography
                     className={

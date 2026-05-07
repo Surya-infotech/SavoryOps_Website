@@ -29,6 +29,8 @@ const timezoneOptions =
         { value: 'UTC', label: 'UTC (UTC+00:00)' },
       ]
 
+const MAX_DESCRIPTION_LENGTH = 1000
+
 function BookDemoPage() {
   const [selectedTimezone, setSelectedTimezone] = useState(timezoneOptions[0].value)
   const [selectedDate, setSelectedDate] = useState('')
@@ -53,7 +55,11 @@ function BookDemoPage() {
   }
 
   const handleChange = (field) => (event) => {
-    setFormData((prev) => ({ ...prev, [field]: event.target.value }))
+    const nextValue =
+      field === 'notes'
+        ? event.target.value.slice(0, MAX_DESCRIPTION_LENGTH)
+        : event.target.value
+    setFormData((prev) => ({ ...prev, [field]: nextValue }))
   }
 
   const handleSubmit = async (event) => {
@@ -200,8 +206,12 @@ function BookDemoPage() {
                 onChange={handleChange('notes')}
                 multiline
                 minRows={4}
+                inputProps={{ maxLength: MAX_DESCRIPTION_LENGTH }}
                 fullWidth
               />
+              <Typography className="!-mt-2 !text-right !font-sans !text-xs !text-[#5f7a71]">
+                {formData.notes.length}/{MAX_DESCRIPTION_LENGTH}
+              </Typography>
               {statusMessage.text ? (
                 <Typography
                   className={
