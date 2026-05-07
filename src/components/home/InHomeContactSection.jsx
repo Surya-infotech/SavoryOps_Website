@@ -2,6 +2,8 @@ import HandshakeRoundedIcon from '@mui/icons-material/HandshakeRounded'
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded'
 import SendRoundedIcon from '@mui/icons-material/SendRounded'
 import { Button, Card, CardContent, Container, TextField, Typography } from '@mui/material'
+import { useState } from 'react'
+import { submitContactLead } from '../../services/contactLeadApi'
 
 const iconMap = {
   mail: <SendRoundedIcon fontSize="small" />,
@@ -10,6 +12,49 @@ const iconMap = {
 }
 
 function InHomeContactSection({ data }) {
+  const [formData, setFormData] = useState({
+    fullname: '',
+    email: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [statusMessage, setStatusMessage] = useState({ type: '', text: '' })
+
+  const handleChange = (field) => (event) => {
+    setFormData((prev) => ({ ...prev, [field]: event.target.value }))
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setStatusMessage({ type: '', text: '' })
+
+    if (!formData.fullname.trim() || !formData.email.trim()) {
+      setStatusMessage({ type: 'error', text: 'Full Name and Email are required.' })
+      return
+    }
+
+    try {
+      setIsSubmitting(true)
+      await submitContactLead({
+        fullname: formData.fullname,
+        email: formData.email,
+        message: formData.message,
+      })
+      setStatusMessage({
+        type: 'success',
+        text: 'Inquiry sent successfully. We will contact you soon.',
+      })
+      setFormData({ fullname: '', email: '', message: '' })
+    } catch {
+      setStatusMessage({
+        type: 'error',
+        text: 'Unable to send inquiry right now. Please try again in a moment.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section className="bg-[#f0fdf4] py-14">
       <Container maxWidth="lg">
@@ -35,21 +80,59 @@ function InHomeContactSection({ data }) {
             </div>
 
             <Card className="!rounded-2xl !border-emerald-100 !bg-white">
-              <CardContent className="!grid !gap-4 !p-5 md:!p-6">
+              <CardContent component="form" onSubmit={handleSubmit} className="!grid !gap-4 !p-5 md:!p-6">
                 <Typography variant="h6" className="!font-sans !font-bold !text-[#1A3C34]">
                   {data.formTitle}
                 </Typography>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <TextField label="Full Name" placeholder="Chef's Name" fullWidth className="[&_.MuiOutlinedInput-root]:!rounded-xl" />
-                  <TextField label="Email" placeholder="hello@yourkitchen.com" type="email" fullWidth className="[&_.MuiOutlinedInput-root]:!rounded-xl" />
+                  <TextField
+                    label="Full Name"
+                    placeholder="Chef's Name"
+                    value={formData.fullname}
+                    onChange={handleChange('fullname')}
+                    required
+                    fullWidth
+                    className="[&_.MuiOutlinedInput-root]:!rounded-xl"
+                  />
+                  <TextField
+                    label="Email"
+                    placeholder="hello@yourkitchen.com"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange('email')}
+                    required
+                    fullWidth
+                    className="[&_.MuiOutlinedInput-root]:!rounded-xl"
+                  />
                 </div>
-                <TextField label="How can we help?" multiline minRows={4} fullWidth className="[&_.MuiOutlinedInput-root]:!rounded-xl" />
+                <TextField
+                  label="How can we help?"
+                  value={formData.message}
+                  onChange={handleChange('message')}
+                  multiline
+                  minRows={4}
+                  fullWidth
+                  className="[&_.MuiOutlinedInput-root]:!rounded-xl"
+                />
+                {statusMessage.text ? (
+                  <Typography
+                    className={
+                      statusMessage.type === 'error'
+                        ? '!font-sans !text-sm !text-red-600'
+                        : '!font-sans !text-sm !text-emerald-700'
+                    }
+                  >
+                    {statusMessage.text}
+                  </Typography>
+                ) : null}
                 <Button
                   variant="contained"
                   size="large"
+                  type="submit"
+                  disabled={isSubmitting}
                   className="!rounded-full !bg-emerald-500 !py-3 !font-semibold hover:!bg-emerald-600"
                 >
-                  Start the Conversation.
+                  {isSubmitting ? 'Sending...' : 'Start the Conversation.'}
                 </Button>
                 <Typography className="!text-xs !font-sans !font-medium !text-[#4b6b5f]">{data.formCaption}</Typography>
               </CardContent>

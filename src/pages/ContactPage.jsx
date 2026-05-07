@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { submitContactLead } from "../services/contactLeadApi";
 
 const contactItems = [
   {
@@ -28,25 +29,6 @@ const contactItems = [
     icon: <LocationOnOutlinedIcon className="!text-emerald-600" />,
   },
 ];
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
-async function getVisitorLocationDetails() {
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-  let country = "";
-
-  try {
-    const locationResponse = await fetch("https://ipapi.co/json/");
-    if (locationResponse.ok) {
-      const locationData = await locationResponse.json();
-      country = locationData?.country_name || "";
-    }
-  } catch {
-    country = "";
-  }
-
-  return { timezone, country };
-}
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -75,22 +57,11 @@ function ContactPage() {
 
     try {
       setIsSubmitting(true);
-      const { timezone, country } = await getVisitorLocationDetails();
-      const response = await fetch(BACKEND_URL + "/system/contactlead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullname: formData.fullname.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
-          timezone,
-          country,
-        }),
+      await submitContactLead({
+        fullname: formData.fullname,
+        email: formData.email,
+        message: formData.message,
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit contact lead");
-      }
 
       setStatusMessage({
         type: "success",
