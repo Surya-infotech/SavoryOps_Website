@@ -6,6 +6,7 @@ import BookDemoPage from './pages/BookDemoPage'
 import ContactPage from './pages/ContactPage'
 import FaqPage from './pages/FaqPage'
 import HomePageComposed from './pages/HomePageComposed'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import PricingPage from './pages/PricingPage'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

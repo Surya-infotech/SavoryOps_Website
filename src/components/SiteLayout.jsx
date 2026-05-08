@@ -23,6 +23,9 @@ const PAGE_SEO = {
   '/pricing': {
     title: 'Pricing',
   },
+  '/privacy-policy': {
+    title: 'Privacy Policy',
+  },
 }
 
 const ORGANIZATION_JSON_LD = {

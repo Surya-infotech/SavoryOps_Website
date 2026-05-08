@@ -57,7 +57,7 @@ const footerCols = [
     title: "Company",
     links: [
       { label: "About Us", to: "/about" },
-      { label: "Privacy Policy", to: import.meta.env.VITE_PRIVACY_POLICY_URL },
+      { label: "Privacy Policy", to: "/privacy-policy" },
       { label: "Pricing Page", to: "/pricing" },
     ],
   },

@@ -14,24 +14,24 @@ function PricingPage() {
   const tiers = [
     {
       name: 'White Label License',
-      price: '$500',
+      price: '$549',
       subtitle: 'Core licensing plan for your branded software launch.',
       features: ['Software licensing', '1 month support included'],
-      cta: 'Choose $500 Plan',
+      cta: 'Choose $549 Plan',
     },
     {
       name: 'White Label Bundle',
-      price: '$649',
+      price: '$719',
       subtitle: 'All-in-one package with licensing, setup, and extended support.',
       features: ['Software licensing', '5 months support included', 'Software setup included'],
-      cta: 'Choose $649 Bundle',
+      cta: 'Choose $719 Bundle',
       featured: true,
     },
   ]
 
   const addonPlans = [
     { name: '3 Month Support Add-on', price: '$89' },
-    { name: 'Software Setup Fee', price: '$99' },
+    { name: 'Software Setup Fee', price: '$149' },
   ]
 
   return (
@@ -124,6 +124,34 @@ function PricingPage() {
                 </li>
               ))}
             </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="!mt-8 !rounded-3xl !border !border-emerald-200 !bg-emerald-50/40 shadow-[0_10px_22px_rgba(6,78,59,0.06)]">
+          <CardContent>
+            <Typography variant="h6" className="!text-[#1A3C34]">
+              Need Customization? We Are Available
+            </Typography>
+            <Typography className="!mt-2 !text-sm !text-[#355A4F]">
+              We also provide customization services based on your business workflow, branding, and feature requirements.
+            </Typography>
+            <ul className="mt-4 space-y-2 text-sm text-[#355A4F]">
+              <li className="flex items-center gap-2">
+                <CheckCircleRoundedIcon fontSize="small" className="!text-emerald-600" />
+                Custom branding and UI changes
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircleRoundedIcon fontSize="small" className="!text-emerald-600" />
+                Workflow and module-level feature customization
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircleRoundedIcon fontSize="small" className="!text-emerald-600" />
+                Integration support based on project scope
+              </li>
+            </ul>
+            <Typography className="!mt-4 !text-sm !font-semibold !text-[#1A3C34]">
+              Contact us to discuss your custom requirements and get a tailored quote.
+            </Typography>
           </CardContent>
         </Card>
       </Container>
