@@ -1,8 +1,11 @@
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import StarRoundedIcon from '@mui/icons-material/StarRounded'
 import { Button, Card, CardContent, Container, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function PricingPage() {
+  const navigate = useNavigate()
+
   const commonIncludes = [
     'Super Admin Panel',
     'Owner Panel',
@@ -14,24 +17,24 @@ function PricingPage() {
   const tiers = [
     {
       name: 'White Label License',
-      price: '$549',
+      price: '$6999',
       subtitle: 'Core licensing plan for your branded software launch.',
       features: ['Software licensing', '1 month support included'],
-      cta: 'Choose $549 Plan',
+      cta: 'Choose $6999 Plan',
     },
     {
       name: 'White Label Bundle',
-      price: '$719',
+      price: '$9999',
       subtitle: 'All-in-one package with licensing, setup, and extended support.',
       features: ['Software licensing', '5 months support included', 'Software setup included'],
-      cta: 'Choose $719 Bundle',
+      cta: 'Choose $9999 Bundle',
       featured: true,
     },
   ]
 
   const addonPlans = [
-    { name: '3 Month Support Add-on', price: '$89' },
-    { name: 'Software Setup Fee', price: '$149' },
+    { name: '3 Month Support Add-on', price: '$1599' },
+    { name: 'Software Setup Fee', price: '$2599' },
   ]
 
   return (
@@ -99,6 +102,7 @@ function PricingPage() {
                   className="!mt-5 !rounded-full !py-1.5"
                   fullWidth
                   color="primary"
+                  onClick={() => navigate('/contact')}
                 >
                   {tier.cta}
                 </Button>
