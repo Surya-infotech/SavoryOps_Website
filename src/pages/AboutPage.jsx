@@ -23,7 +23,7 @@ const softwareHighlights = [
   'Multi-tenant architecture for one outlet or many brands',
   'Connected ecosystem: Super Admin, Owner Panel, User App, Employee App, and Landing Page',
   'Real-time sync across QR ordering, KOT, reservations, billing, and analytics',
-  'Role-ready workflows for Waiter, Head Chef, Chef, Cashier, and Host',
+  'Role-ready workflows for Waiter, Head Chef, Chef, Cashier, Host, and Delivery',
 ]
 
 const serviceCards = [

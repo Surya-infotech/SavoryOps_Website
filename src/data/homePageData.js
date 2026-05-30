@@ -54,14 +54,37 @@ export const walkthroughTabs = [
   {
     label: 'Employee App',
     title: 'Fast coordination for frontline teams',
-    text: 'Connect waiter, chef, cashier, and host actions in one real-time workflow engine.',
+    text: 'Connect waiter, chef, cashier, host, and delivery actions in one real-time workflow engine.',
     bullets: [
-      '5-role coordination: Waiter, Head Chef, Chef, Cashier, and Host',
+      '6-role coordination: Waiter, Head Chef, Chef, Cashier, Host, and Delivery',
       'KOT flow management',
       'Role-based action screens',
       'Faster handoffs, fewer delays',
     ],
     image: employeeAppImage,
+  },
+]
+
+export const orderTypes = [
+  {
+    title: 'QSR',
+    details: 'Power high-speed counter service with fast checkout, KOT routing, and queue-friendly order flow.',
+  },
+  {
+    title: 'Dine-In',
+    details: 'Manage table service with QR menus, reservations, kitchen tickets, and smooth front-of-house coordination.',
+  },
+  {
+    title: 'Takeaway',
+    details: 'Handle pack-and-go orders with clear prep timing, billing, and handoff visibility for busy rush windows.',
+  },
+  {
+    title: 'Pickup',
+    details: 'Let guests order ahead and collect on arrival with ready-status updates and streamlined pickup counters.',
+  },
+  {
+    title: 'Delivery',
+    details: 'Coordinate last-mile delivery with dedicated role workflows, order tracking, and dispatch-ready handoffs.',
   },
 ]
 

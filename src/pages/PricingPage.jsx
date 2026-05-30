@@ -17,24 +17,37 @@ function PricingPage() {
   const tiers = [
     {
       name: 'White Label License',
-      price: '$6999',
+      price: '$3899',
       subtitle: 'Core licensing plan for your branded software launch.',
       features: ['Software licensing', '1 month support included'],
-      cta: 'Choose $6999 Plan',
+      cta: 'Choose $3899 Plan',
     },
     {
       name: 'White Label Bundle',
-      price: '$9999',
+      price: '$5999',
       subtitle: 'All-in-one package with licensing, setup, and extended support.',
       features: ['Software licensing', '5 months support included', 'Software setup included'],
-      cta: 'Choose $9999 Bundle',
+      cta: 'Choose $5999 Bundle',
       featured: true,
     },
   ]
 
+  const supportDetails = [
+    'Bug fixes',
+    '2 language add',
+  ]
+
+  const setupDetails = [
+    'Logo and theme color change',
+    'Setup on server',
+    'Application upload on Google Play Store',
+    'Basic software details setup',
+    'Database setup',
+  ]
+
   const addonPlans = [
-    { name: '3 Month Support Add-on', price: '$1599' },
-    { name: 'Software Setup Fee', price: '$2599' },
+    { name: '3 Month Support Add-on', price: '$799', details: supportDetails },
+    { name: 'Software Setup Fee', price: '$1499', details: setupDetails },
   ]
 
   return (
@@ -117,17 +130,31 @@ function PricingPage() {
             <Typography className="!mt-2 !text-sm !text-[#355A4F]">
               Upgrade your base plan anytime with these add-ons.
             </Typography>
-            <ul className="mt-4 space-y-2 text-sm text-[#355A4F]">
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
               {addonPlans.map((addon) => (
-                <li key={addon.name} className="flex items-center justify-between rounded-xl border border-emerald-100 bg-emerald-50/40 px-3 py-2">
-                  <span className="flex items-center gap-2">
-                    <CheckCircleRoundedIcon fontSize="small" className="!text-emerald-600" />
-                    {addon.name}
-                  </span>
-                  <span className="font-semibold text-[#1A3C34]">{addon.price}</span>
-                </li>
+                <div
+                  key={addon.name}
+                  className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <Typography variant="subtitle1" className="!font-sans !font-bold !text-[#1A3C34]">
+                      {addon.name}
+                    </Typography>
+                    <Typography className="!shrink-0 !text-lg !font-bold !text-[#1A3C34]">
+                      {addon.price}
+                    </Typography>
+                  </div>
+                  <ul className="mt-4 space-y-2 text-sm text-[#355A4F]">
+                    {addon.details.map((detail) => (
+                      <li key={detail} className="flex items-center gap-2">
+                        <CheckCircleRoundedIcon fontSize="small" className="!text-emerald-600" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </CardContent>
         </Card>
 
