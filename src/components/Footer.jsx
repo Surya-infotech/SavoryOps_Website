@@ -27,6 +27,10 @@ const panelLinks = [
 
 const kitchenLinks = [
   {
+    label: "POS",
+    to: import.meta.env.VITE_LANDING_PAGE_URL,
+  },
+  {
     label: "Order Details",
     to: import.meta.env.VITE_LANDING_PAGE_URL,
   },
